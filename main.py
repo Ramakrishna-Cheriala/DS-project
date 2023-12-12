@@ -5,6 +5,9 @@ from src.ChickenDiseaseClassification.pipeline.stage_01_data_ingestion import (
 from src.ChickenDiseaseClassification.pipeline.stage_02_prepare_base_model import (
     PrepareBaseModelTraningPipeline,
 )
+from src.ChickenDiseaseClassification.pipeline.stage_03_training import (
+    ModelTrainingPipeline,
+)
 
 
 STAGE_NAME = "Data Ingestion Stage"
@@ -26,6 +29,17 @@ try:
     obj1.main()
     logger.info(f"{STAGE_NAME} finished")
 
+except Exception as e:
+    logger.exception(e)
+    raise e
+
+
+STAGE_NAME = "Training"
+try:
+    logger.info(f"{STAGE_NAME} started")
+    obj = ModelTrainingPipeline()
+    obj.main()
+    logger.info(f"stage {STAGE_NAME} completed")
 except Exception as e:
     logger.exception(e)
     raise e
