@@ -2,9 +2,11 @@ from ChickenDiseaseClassification.config.configuration import ConfigurationManag
 from ChickenDiseaseClassification.components.prepare_callbacks import PrepareCallback
 from ChickenDiseaseClassification.components.training import Training
 from ChickenDiseaseClassification import logger
+import os
 
 
 STAGE_NAME = "Training"
+file_path = "artifacts/training/model.h5"
 
 
 class ModelTrainingPipeline:

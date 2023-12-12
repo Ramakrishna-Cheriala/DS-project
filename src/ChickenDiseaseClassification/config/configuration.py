@@ -1,10 +1,11 @@
-from src.ChickenDiseaseClassification.constants import *
-from src.ChickenDiseaseClassification.utils.common import read_yaml, create_directory
-from src.ChickenDiseaseClassification.entity.config_entity import (
+from ChickenDiseaseClassification.constants import *
+from ChickenDiseaseClassification.utils.common import read_yaml, create_directory
+from ChickenDiseaseClassification.entity.config_entity import (
     DataIngestonConfig,
     PrepareBaseModelConfig,
     PrepareCallbacksConfig,
     TrainingConfig,
+    EvaluationConfig,
 )
 import os
 from pathlib import Path
@@ -86,3 +87,14 @@ class ConfigurationManager:
         )
 
         return training_config
+
+    def get_validation_config(self) -> EvaluationConfig:
+        eval_config = EvaluationConfig(
+            path_of_model="artifacts/training/model.h5",
+            training_data="artifacts/data_ingestion/Chicken-fecal-images",
+            all_params=self.params,
+            params_batch_size=self.params.BATCH_SIZE,
+            params_image_size=self.params.IMAGE_SIZE,
+        )
+
+        return eval_config

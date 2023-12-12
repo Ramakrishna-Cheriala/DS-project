@@ -1,8 +1,10 @@
-from src.ChickenDiseaseClassification.config.configuration import ConfigurationManager
-from src.ChickenDiseaseClassification.components.prepare_base_model import (
+from ChickenDiseaseClassification.config.configuration import ConfigurationManager
+from ChickenDiseaseClassification.components.prepare_base_model import (
     PrepareBaseModel,
 )
-from src.ChickenDiseaseClassification import logger
+from ChickenDiseaseClassification import logger
+
+STAGE_NAME = "Base_model"
 
 
 class PrepareBaseModelTraningPipeline:
